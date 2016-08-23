@@ -1,0 +1,1 @@
+<div id="myCustomFlash" class="success"><?php echo h($message); ?></div>

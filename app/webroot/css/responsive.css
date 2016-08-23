@@ -1,0 +1,328 @@
+@media screen and (max-width:768px) {
+	.sign-in-block { position: fixed; bottom: 0; width: 100%; }	
+	input.pink-btn, button.pink-btn { width: 100.7%;}
+	input.blue-btn {width: 100%;}
+	.grey-btn{width: 96.2%;}
+	header h2{width: 93%;}
+	.push2 {height:0px; }
+	/*.detail-addbox li{background-position:center right 7.5%;}*/
+}
+
+@media (max-width:767px){
+	.Raffle-type{font-size:17px;width:29%;}
+	#PagesStartRaffleForm select{width:100%;font-size:16px;}
+}
+
+@media screen and (max-width:640px) {
+/*	.hoboken-header .right { width: 26%; }*/
+        .hoboken-header .right { width: 33%; text-align: right; }
+	#mid .create-btn, #mid .join-btn{width:62%;border-radius:3px!important; }
+	.splash h1{margin:0 auto 55px;}
+	.devider {margin: 15px auto;width: 66%;font-size:12px; }
+	/*.raffles .detail-addbox li{background-position:center right 9%;}
+	*/
+	input.pink-btn, button.pink-btn {font-size: 20px;    padding: 16px 8px 14px;}
+	header { padding: 0px 19px; }
+	.raffles li{line-height:22px;}
+	.sign-in-h1 img { width: 38%; }
+	.sign-in-h1 { margin-bottom: 34px; }
+	h4 { font-size: 24px; }
+	h3, .hoboken-header .right strong { font-size: 23px;/*  margin-bottom: 5px;  */} 
+	h2 { font-size: 29px; }
+	.form input[type="text"], .form input[type="email"], .form input[type="password"],  .form input[type="tel"],.form input[type="number"],.form textarea { font-size: 18px; padding: 16px 12px 14px; width: 93.3%; }
+	.addremove input[type="url"], .addremove input[type="text"], .addremove input[type="email"], .addremove input[type="password"], .addremove input[type="tel"], .addremove input[type="number"], .addremove textarea{text-indent:0;}
+	.blue-btn, .grey-btn, .pink-btn { padding: 16px 8px 14px; font-size: 20px;  width: 95.6%;}
+	.green-btn{font-size: 18px; padding: 14px 0 12px;width: 94%;}
+	
+	input.blue-btn { padding: 16px 8px 14px; font-size: 20px; width: 98.9%; }
+	.forget-pass { padding: 19px 0 15px; margin-top: 66px; font-size: 20px; }
+	.form p { font-size: 16px; }
+	.hoboken-header p { font-size: 18px; }
+	.hoboken-header { padding: 8px 11px 6px 15px; margin-bottom: 40px }
+	.sign-in-block { padding: 19px 0 15px; font-size: 20px;width: 100%; }
+	.coupons li .select-coupons img, .coupons-result li .select-coupons img { width: 39%; }
+	.wrong { display: inline-block; width: 52px; }
+	.right { display: inline-block; width: 52px; }
+	.name_announced {display: inline-block; font-size: 16px;  width: 122px;top: 16px; /*margin-left: 20px;*/ margin-left: 6px;}
+	.name_announced  img{display: inline-block;width: 52px;}
+	.splash { width: 63%;  }
+	.splash h1 { margin: 0 auto 30px; /*width: 62%;*/ width: 100%; }
+	.or { font-size: 18px; margin: 23px 0 25px; }
+	.hoboken-header .date { font-size: 20px; }
+	.timer { font-size: 36px; }
+	.raffle-head { font-size: 24px; }
+	.raffle-size p { width: 61%; font-size: 18px; margin-top: 24px; }
+	.choose-raffle-size .col span { font-size: 26px; margin-bottom: 16px; }
+	.choose-raffle-size .col figure { margin: 0 auto; width: 60%; }
+	.choose-raffle-size .choose a { font-size: 21px; }
+	.search { padding: 0 10px 10px; }
+	.search input[type="search"] { font-size: 16px; }
+	.raffel-found { padding: 22px 15px; }
+	.raffel-found p { font-size: 22px; margin-bottom: 8px; }
+	.raffel-found strong { font-size: 24px; }
+	/* .raffles { margin-top: 24px; } */
+	.raffles li p { font-size: 20px; }
+	.raffles li { padding: 13px 17px; margin: 0 auto 20px; }
+	.raffel-found p { font-size: 16px; margin-bottom: 7px; }
+	.raffel-found strong { font-size: 18px; }
+	.raffel-found { padding: 17px 12px; }
+	/* .raffles { margin-top: 21px; } */
+	.raffles li { background-position: 96% center; border-radius: 5px; margin: 0 auto; padding: 11px; width: 88%; }
+	.raffles li p { font-size: 16px; }
+	.riddle-helmet p { font-size: 17px; }
+	.running .running-text { }
+	.running .jackpot span , .running .running-timmer {font-size:22px}
+	.running .running-timmer{margin-left:0}
+	.riddle-helmet .drawing { font-size: 22px; margin-bottom: 5px; padding: 8px 5px; }
+	.jackpot { font-size: 18px; padding: 22px 0; font-weight:bold}
+	.legal-certify p { font-size: 16px; margin: 0 auto 22px; width: 70%; }
+	.user-details h5 {font-size: 28px;}
+	.user-details .declare{font-size: 24px;}
+	.user-details .winning-price{font-size: 18px;}
+	.user-details .text {font-size: 16px;line-height: 24px;width: 89%;}
+	.mobile-no {font-size: 24px;}
+	.raffel-run-time .timer {font-size: 26px;}
+	.coupons li .select-coupons span{font-size: 36px;}
+	.choose-raffle-size .col figure span.number{  font-size: 37px;}
+	.choose-raffle-size .col figure span.text{font-size: 16px;}
+	input.pink-btn, button.pink-btn { width: 99%;}
+	.choose-raffle-size .col span.buy-ticket-text{width: 74%;font-size: 11px;clear:both;line-height: 33px;padding-bottom: 0;}
+	.buy_ticket{bottom:0;}
+	.choose-raffle-size .col span.buy-ticket{font-size: 34px;}
+	/*#error-validation {font-size: 12px; width: 215px;}*/
+	.logo-center img{width:54px;padding-top:8px;}
+	.royal-raffle li{width: 90%;}
+	.royal-raffle li span{font-size: 38px;}	
+	.choose-raffle-size .col span.buy-ticket-text{  line-height: 10px;}
+	.coupons-result .select-coupons span,.coupons-result .select-coupons strong,.coupons-result .winner .select-coupons strong,.coupons-result .winner .select-coupons span{font-size: 26px;line-height: 0.8;}
+	.coupons-result .winner .select-coupons span{top: -76%;}
+	.coupons-result .winner .select-coupons strong{top: 73%;}
+	/*.credit-card-view {width:60%}*/
+	.removePriceFeild, .addNewPriceFeild{  height: 95.7%;  right: 5px;}
+	.running .jackpot span{display: block;}
+	.royal-raffle li .prize-winner{color:#fff;top:-60px; font-size: 33px;}
+	.royal-raffle li .prize-winner-code{color:#fff;top:38px;}
+	.coupons-result .select-coupons .prize-winner{color:#fff;top: -76%;font-size: 18px;}
+	.coupons-result .select-coupons .prize-winner-code{color:#fff;top: 73%;}
+	.winning-details{display: block; font-weight: normal; padding: 0px;color: #818189;font-size: 16px;font-weight: bold;margin-bottom: 10px;}
+
+}
+
+@media screen and (max-width:575px) {
+/*	.hoboken-header .right { width: 28%; }*/
+        .hoboken-header .right { width: 33%; text-align: right; }
+	.choose-raffle-size .label-ticket{line-height: 40px;}
+	/*.credit-card-view {width:90%}*/
+	.removePriceFeild, .addNewPriceFeild, .view_swp_details{width:24px;text-align:10px;font-size:22px;padding:0;text-align:center;}
+	
+
+}
+@media screen and (max-width:480px) {
+
+	
+	.helmet .running .running-text{font-size:16px; }
+	.prize_list,.first{font-size:16px; }
+	.firstpr{font-size:16px;}
+	.first{width:61px; color:#4b4243;}
+	header h2 img { width: 13%; }
+	header h2 { width: 87%; font-size: 24px; line-height: 29px; }
+	.raffle-head { font-size: 20px; }
+	.raffle-size p { font-size: 16px; margin-top: 20px; width: 72%; }
+	.choose-raffle-size .col span { font-size: 20px; margin-bottom: 15px; }
+	.choose-raffle-size .col figure { width: 75%; }
+	h2 { font-size: 27px; }
+	.hoboken-header p { font-size: 16px; }
+	.hoboken-header { margin: 0 auto 15px; }
+	.form { width: 85%; }
+	.form input[type="text"],.form input[type="email"],.form input[type="password"],.form input[type="tel"],.form input[type="number"],.form textarea { font-size: 16px; padding: 12px 9px 10px; width: 94%; }
+	
+	h4 { font-size: 22px; }
+	.blue-btn, .grey-btn, .pink-btn, input.blue-btn, input.grey-btn, input.pink-btn { font-size: 18px; padding: 14px 9px 12px; width: 94%; }
+	.green-btn{font-size: 18px; padding: 14px 0 12px;width: 94%;}
+	.forget-pass { font-size: 18px; margin-top: 56px; padding: 16px 0 12px; }
+	.form input[type="submit"] { font-size: 18px; padding: 12px 9px 10px; width: 99%; }
+	.form .t-c { font-size: 16px; }
+/*	.hoboken-header .right { width: 19%; }*/
+	.winner-msg { font-size: 18px; }
+	.coupons li .select-coupons img, .coupons-result li .select-coupons img { width: 46%; }
+	.splash { width: 83%; }
+	.sign-in-block { font-size: 18px; padding: 12px 0; }
+	.hoboken-header .date { font-size: 14px; }
+/*	.hoboken-header .right { width: 26%; }*/
+        .hoboken-header .right { width: 33%; text-align: right; }
+	.choose-raffle-size .choose a { font-size: 16px; }
+	.hoboken-header { margin: 0 auto 16px; }
+	.riddle-helmet p { font-size: 19px; }
+	/*.helmet figure { margin: 0 auto 10px; width: 63%; }*/
+	.riddle-helmet .drawing { font-size: 18px; margin-bottom: 5px; padding: 18px 5px; }
+	.jackpot { font-size: 15px; padding: 20px 0; }
+	.legal-certify p{ width: 84%;}
+	.form .t-c {font-size: 14px;}
+	.user-details h5{font-size: 20px;margin-bottom: 10px}
+	.user-details sup{font-size: 14px;}
+	.user-details .declare{margin-bottom: 10px;font-size: 18px;}
+	.user-details .winning-price{font-size: 16px;}
+	.user-details .text { font-size: 14px;}
+	.mobile-no {font-size: 20px;}
+	.raffel-run-time .timer {font-size: 20px;margin-bottom: 20px;}
+	.coupons li .select-coupons span{font-size: 23px;}
+	.choose-raffle-size .col figure span.number{  font-size: 30px;}
+	.choose-raffle-size .col figure span.text{font-size: 10px;}
+	.hoboken-header .right .number{font-size: 22px;}
+	input.pink-btn, button.pink-btn { width: 98.8%;}
+	.choose-raffle-size .col span.buy-ticket {font-size: 28px;clear:both;}
+	h3, .hoboken-header .right strong { font-size: 16px;}
+		#mid { margin-top: 8px; }
+		/*.row-last{width:85%;}*/
+		/* .choose-raffle-size .label-ticket {line-height: 70px;} */
+		.coupons-result .select-coupons span,.coupons-result .select-coupons strong,.coupons-result .winner .select-coupons strong{font-size: 24px;line-height: 0.8;}
+		.coupons-result .winner .select-coupons span{font-size: 19px;}
+		.org-cover-center{margin: auto;width: 325px;}
+/*.raffles .detail-addbox li{background-position:right 11% center;}*/
+}
+@media screen and (max-width: 479px){
+
+	.span-card-margin{margin-right: 9px;}
+	.credit-card-view .card-num{font-size: 24px;}
+	.credit-card-view .card-name{ width: 28%;font-size: 19px;}
+	.credit-card-view .card-dd{width: 44%;}
+	.credit-card-view .m-y{  font-size: 12px;}
+	.credit-card-view .day{font-size: 12px; width: 36px;}
+	.credit-card-view .month{font-size: 24px;}
+/*	.raffles .detail-addbox li{background-position: right 14% center;}*/
+.view_swp_details{background-position:4px center;width:36px;}
+
+/*.removePriceFeild, .addNewPriceFeild, .view_swp_details{width:20px;text-align:center;}*/
+
+}
+@media screen and (max-width:375px) {
+	.choose-raffle-size .label-ticket{ font-size:12px!important; line-height: 20px; background:red;}
+/*	.hoboken-header .right {width: 28%;}*/
+        .hoboken-header .right {width: 33%; text-align: right;}
+	.riddle-helmet p {font-size:13px;}
+	.choose-raffle-size .col span.buy-ticket-text{font-size: 9px}
+	.helmet .running{width:51%;}
+	.coupons-result .select-coupons span, .coupons-result .select-coupons strong, .coupons-result .winner .select-coupons strong {font-size:19px; line-height: 1.2em;}
+	.running .jackpot span, .running .running-timmer {font-size: 16px; font-weight: 500;color:#000;display: block;}	
+	.running .jackpot {  padding:  0;}
+	.jackpot{font-size:18px;	 }
+	.running .running-text{margin-bottom: 8%;font-size: 18px;}
+	.riddle-helmet .winner-pay{font-size: 13px;margin: 0}
+	.removePriceFeild, .addNewPriceFeild{right:0px;}
+	.view_swp_details{right:9px;}
+	.counttime{padding:8px 2px;}
+	.profile-jackport{font-size: 16px;margin-top: 0px;display:block;margin-bottom: 6px;margin-top: -6px;}
+	.actual-display-jackport{font-size: 16px;margin-top: 0px;display:block;margin-bottom: 6px;}
+
+}
+
+
+@media screen and (max-width:360px) {
+		.helmet .running{margin-left:10px; }
+/* 	.form input[type="text"], .form input[type="email"], .form input[type="password"], .form input[type="tel"] { font-size: 16px; width: 92%; } */
+	.blue-btn, .grey-btn, .pink-btn, input.blue-btn, input.grey-btn, input.pink-btn { font-size: 18px; width: 92%; }
+	.green-btn{font-size: 18px; padding: 14px 0 12px;width: 94%;}
+	.hoboken-header .right { width: 33%; text-align: right; }
+	.winner-msg { font-size: 16px; width: 86%; }
+	.hoboken-header .date { font-size: 14px; }
+	header h2 img { width: 20%; }
+	header h2 { font-size: 20px; width: 82%;}
+	.raffle-head { font-size: 18px; margin-bottom: 20px }
+	.raffle-size p { font-size: 14px; margin-top: 16px; width: 85%; }
+	.choose-raffle-size .col span { font-size: 18px; margin-bottom: 13px; }
+	.choose-raffle-size .col figure { width: 90%; }
+	.choose-raffle-size .choose a { font-size: 14px; }
+	.raffel-found { padding: 15px 6px; }
+	.raffel-found p { font-size: 16px; }
+	.raffle-size p { width: 94%; }
+	.raffles li h3 { font-size: 16px; }
+	.raffel-found strong { font-size: 18px; }
+	.raffles li p { font-size: 14px; }
+	.raffles li { padding: 9px 0; width: 100%;text-indent:9px;}
+	.riddle-helmet p { font-size: 16px; }
+	.running .running-text { font-size: 17px; }
+	.hoboken-header .right strong { font-size: 16px; }
+	.jackpot { font-size: 15px; }
+	.riddle-helmet .drawing { font-size: 16px; margin-bottom:5px; padding:10px 0; }
+	.helmet { padding: 15px 20px; }
+	.legal-certify p { font-size: 14px; margin: 0 auto 15px;  width: 83%;}
+	.mobile-no {font-size: 16px;}
+	.raffel-run-time .timer {font-size: 18px;margin-bottom: 18px;}
+	.browse{width: 97%;}
+	.choose-raffle-size .col figure span.number{  font-size: 24px;}
+	.choose-raffle-size .col figure span.text{font-size: 10px;}
+	.choose-raffle-size .col span.buy-ticket-text {font-size:9px;}
+	.logo-center img {padding-top: 15px;width: 45px;}
+	.choose-raffle-size .label-ticket {padding-top:7px!important; line-height: 30px; font-size: 13px; display: block}
+	.choose-raffle-size .col span.buy-ticket { font-size: 28px;}
+	.coupons-result .select-coupons span,.coupons-result .select-coupons strong,.coupons-result .winner .select-coupons strong{font-size: 27px;line-height: 0.8;}
+	.helmet .running{width:62%;}
+	.running .jackpot{padding:0px}
+	.running .running-text{/*margin:0 0 8% 25px*/}
+        .view_swp_details{right:0;}
+    #user_detail span.jackpot{color: #000;display: block;font-size: 16px;font-weight: normal;padding: 0;text-transform: none;}
+    .rafflePrizeList{width:100%;}
+	
+}
+
+@media screen and (max-height:360px) {
+	.sign-in-block {position: static;  margin-top: 50px;}	
+	
+
+}
+
+@media screen and (max-width:375px) {
+		.Raffle-type{font-size: 14px;padding: 12px 0;width: 30%;}
+		.rafflePrizeList .customLabel1{font-size: 15px; line-height: 9px; padding: 1px 0;  width: 64px;}
+		.prizes_prize{   margin: 0 0 3px;}
+		.rafflePrizeList .customLabel1 { color: #4b4243;
+	    font-size: 15px;
+	    line-height: 13px;
+	    padding: 1px 0px 4px;
+	    width: 64px;}
+		.rafflePrizeList .customLabel2 {width:15px;line-height: 1;color: #4b4243;}
+		.rafflePrizeList .customLabel3 {color: #4b4243;font-size: 15px;width:auto;line-height: 1;}
+		.prizes_prize{font-size: 18px;}
+		.cover-center{margin: auto;width: 80%;}
+		#user_detail span.jackpot{color: #000;display: block;font-size: 16px;font-weight: normal;padding: 0;text-transform: none;}
+
+	}
+
+
+
+@media screen and (max-width:320px) {
+	.splash { width: 92%; }		
+	.sign-in-block a{margin-right: 10px;    padding-right: 10px;}
+	header h2{width: 80%;}
+	.running .running-text{margin-bottom:13px;}
+	.choose-raffle-size .col span.buy-ticket-text{padding-top:27px;}
+	.choose-raffle-size .label-ticket {font-size: 12px!important;}
+	.coupons-result .select-coupons span,.coupons-result .select-coupons strong,.coupons-result .winner .select-coupons strong{font-size: 19px;line-height: 0.8;}
+	.coupons-result .winner .select-coupons span{font-size: 17px;}
+	.riddle-helmet p {font-size:13px!important;}
+	.myraffilImg{margin-right: 10px; width: 55px;}
+	/*	.removePriceFeild, .addNewPriceFeild{right:-4px;}*/
+	/*	.raffles .detail-addbox li{background-position:right 14% center;}*/
+	.DisplayBlock .view_swp_details{background-position:4px center;}
+	.removePriceFeild, .addNewPriceFeild{right:-3px; }
+	
+	}
+@media screen and (max-width:280px) {
+	.choose-raffle-size .col span.buy-ticket{font-size: 18px;}
+	.choose-raffle-size .label-ticket{font-size: 11px;line-height: 17px;}
+	.choose-raffle-size .col span.buy-ticket-text{line-height: 22px; font-size: 10px!important;}
+	.coupons-result .select-coupons span,.coupons-result .select-coupons strong,.coupons-result .winner .select-coupons strong{font-size: 20px;line-height: 0.8;}
+}
+
+@media screen and (max-device-width:768px) and (min-device-width:220px) { 
+    .col3block .col_area { margin: 0 1%;  width: 27%;}
+}
+
+@media screen and (max-device-width:480px) and (min-device-width:220px) { 
+	.ammountArea h1 {font-size:35px;}
+	.ammountArea h2 {font-size: 12px}
+	.ammountArea p {font-size: 13px !important;}
+	.riddle-helmet p {font-size: 16px;}
+	
+}
+
