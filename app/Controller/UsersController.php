@@ -40,6 +40,7 @@ $rest_key = "ovseLVbRwrVvIffkBQ5AsH0ysGwsV3107GQN5ncc";
 $master_key = "ktbyBIznia0ErrJT7Kd1rC7H2nCooT0WJdIFbHZO";
 
 ParseClient::initialize($appId, $rest_key, $master_key);
+//ParseClient::setServerURL('http://localhost','parse')
 
 @ob_start();
 @session_start();

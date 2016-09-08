@@ -9,7 +9,7 @@
     "packages": [
         {
             "name": "parse/php-sdk",
-            "version": "1.1.5",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ParsePlatform/parse-php-sdk.git",
