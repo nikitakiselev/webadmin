@@ -40,7 +40,8 @@ $rest_key = "ovseLVbRwrVvIffkBQ5AsH0ysGwsV3107GQN5ncc";
 $master_key = "ktbyBIznia0ErrJT7Kd1rC7H2nCooT0WJdIFbHZO";
 
 ParseClient::initialize($appId, $rest_key, $master_key);
-//ParseClient::setServerURL('http://localhost','parse')
+ParseClient::setServerURL('http://localhost','parse');
+
 
 @ob_start();
 @session_start();
@@ -70,7 +71,13 @@ class UsersController extends AppController {
 
         $action = $this->request->params['action'];
         if (empty($userId) && ($action != "user_login" && $action != "login" && $action != "public_url" && $action != "record_video" && $action != "save_video")) {
-            $this->redirect(array("controller" => "users", "action" => "user_login"));
+	    $subdomain = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
+	    if(strcasecmp('admin', $subdomain) == 0){
+            	$this->redirect(array("controller" => "admin"));
+	    }
+	    else{
+            	$this->redirect(array("controller" => "users", "action" => "user_login"));
+	    }            
         }
     }
 
@@ -243,6 +250,10 @@ class UsersController extends AppController {
                 }
                 $pitch_deck = $object->get('pitch_deck');
                 $user_id = $object->get("user_id");
+                if(!$user_id){
+            	   var_dump($object->getObjectId());
+            	   die();
+            	}
                 $userDetails = $user_id->fetch();
                 $user_name = $userDetails->get('name');
                 $createdAt = $object->getCreatedAt();
@@ -410,10 +421,19 @@ class UsersController extends AppController {
 
     public function logout() {
 //$this->set('loggedIn', false);
+
+	$this->Session->read('Auth.User');
+	$type = $this->Auth->user('User.type');
+
         $this->Session->destroy();
         $this->Auth->logout();
 
-        $this->redirect(array("controller" => "users", "action" => "user_login"));
+	if(strcasecmp('admin', $type) == 0){
+	    $this->redirect(array("controller" => "admin"));
+	}
+	else{
+	    $this->redirect(array("controller" => "users", "action" => "user_login"));
+	}
     }
 
     function timeDiffCalculate($timestamp) {
