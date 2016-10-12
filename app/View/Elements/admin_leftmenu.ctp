@@ -19,6 +19,8 @@ $userImage = "avatar5.png";
             <li>
                 <?php echo $this->Html->link("Pitch Feed", array("controller"=>"users", "action"=>"home"), array("class"=>"menu_links", "rel"=>"table_box"));?>
             </li>
+
+            <li><?php echo $this->Html->link("Manage users", '/usersManager/index', array("class"=>"menu_links", "rel"=>"table_box"));?></li>
         </ul>
         <?php }?>
     </section>

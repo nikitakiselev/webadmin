@@ -27,14 +27,24 @@
  */
 Router::connect('/', array('controller' => 'users', 'action' => 'home'));
 Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'admin' => true));
+
+Router::connect('/usersManager/:action/*', [
+    'controller' => 'usersManager',
+    'admin' => true,
+]);
+//Router::connect('/users-manager/:id/edit', [
+//    'controller' => 'usersManager',
+//    'action' => 'edit',
+//    'admin' => true,
+//], array("id" => "[0-9]+"));
+
 Router::connect('/:web_user_name', array(
     'controller' => 'users',
     'action' => 'public_url',
     'web_user_name' => null,
-    
 ),
-array(   
-    'web_user_name' => '[a-zA-Z0-9\-]+',    
+array(
+    'web_user_name' => '[a-zA-Z0-9\-]+',
     'pass' => array('web_user_name'),
 ));
 
