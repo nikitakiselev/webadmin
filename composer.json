@@ -29,5 +29,8 @@
 	},
 	"bin": [
 		"lib/Cake/Console/cake"
-	]
+	],
+	"autoload": {
+		"files": ["app/Support/helpers.php"]
+	}
 }
