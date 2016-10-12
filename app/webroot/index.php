@@ -1,5 +1,4 @@
 <?php
-//echo phpinfo(); exit;
 /**
  * Index
  *
@@ -47,6 +46,17 @@ if (!defined('ROOT')) {
 if (!defined('APP_DIR')) {
 	define('APP_DIR', basename(dirname(dirname(__FILE__))));
 }
+
+/**
+ * Composer autoloader
+ */
+require_once ROOT."/vendor/autoload.php";
+
+/**
+ * Dotenv
+ */
+$dotenv = new Dotenv\Dotenv(ROOT);
+$dotenv->load();
 
 /**
  * The absolute path to the "cake" directory, WITHOUT a trailing DS.

@@ -15,6 +15,10 @@ class ComposerStaticInit095d20496c73acff42988c2fc75458d1
         array (
             'Parse\\' => 6,
         ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
         'C' => 
         array (
             'Composer\\Installers\\' => 20,
@@ -29,6 +33,10 @@ class ComposerStaticInit095d20496c73acff42988c2fc75458d1
         'Parse\\' => 
         array (
             0 => __DIR__ . '/..' . '/parse/php-sdk/src/Parse',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Composer\\Installers\\' => 
         array (
