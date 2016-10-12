@@ -20,9 +20,6 @@
  */
 App::uses('AppController', 'Controller');
 
-//For Parse api integration
-require ROOT . DS . 'vendor/parse/php-sdk/autoload.php';
-
 use Parse\ParseClient;
 use Parse\ParseQuery;
 use Parse\ParseObject;
@@ -34,14 +31,6 @@ use Parse\ParseException;
 use Parse\ParseAnalytics;
 use Parse\ParseFile;
 use Parse\ParseCloud;
-
-$appId = "GxT3Qbs0tWGV8ujcfmtJqwCB9QzYicdmtskmjkRd";
-$rest_key = "ovseLVbRwrVvIffkBQ5AsH0ysGwsV3107GQN5ncc";
-$master_key = "ktbyBIznia0ErrJT7Kd1rC7H2nCooT0WJdIFbHZO";
-
-ParseClient::initialize($appId, $rest_key, $master_key);
-ParseClient::setServerURL('http://localhost','parse');
-
 
 @ob_start();
 @session_start();
@@ -66,6 +55,11 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+
+        // Init parse
+        ParseClient::initialize(env('PARSE_APP_ID'), env('PARSE_REST_KEY'), env('PARSE_MASTER_KEY'));
+        ParseClient::setServerURL(env('PARSE_SERVER_URL'), 'parse');
+
         $userId = $this->Auth->user('User.id');
        
 
