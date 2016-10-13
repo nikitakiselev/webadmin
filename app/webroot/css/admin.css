@@ -756,6 +756,9 @@ video{
     padding-bottom: 10px;
     border-bottom: 2px solid gray;
 }
+.user-manager-form {
+    margin-bottom: 20px;
+}
 
 .user-manager-form .input {
     margin-bottom: 20px;
@@ -765,7 +768,8 @@ video{
     margin-right: 10px;
 }
 
-.user-manager-form .input > input {
+.user-manager-form .input > input,
+.user-manager-form .input.select > select {
     border: 1px solid gray;
     padding: 3px 5px;
     width: 100%;

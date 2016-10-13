@@ -66,4 +66,27 @@ class UsersManagerController extends AppController
             $this->request->data = $user;
         }
     }
+
+    public function changePassword()
+    {
+        if ($this->request->is('post')) {
+
+            $v = new \App\Support\Validator\Validator($this->request->data, [
+                'new_password' => 'required|confirmed|custom_rule:param1,param2',
+            ]);
+
+            $v->extend('custom_rule', function ($value, $field, $rule, $param1, $param2) {
+                dd($value, $field, $rule, $param1, $param2);
+            });
+
+            if ($v->fails()) {
+                $_SESSION['errors'] = $v->errors();
+                $this->Session->setFlash('There are some validation errors', 'error');
+
+                return $this->redirect($this->referer());
+            }
+
+            $this->Session->setFlash('Password changed', 'success');
+        }
+    }
 }
