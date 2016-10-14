@@ -78,5 +78,6 @@ $siteDescription = "30 Second Pitch Admin Panel";
         </aside>
     </div>
     <?php echo $this->element('sql_dump'); ?>
+    <?php echo $this->Html->script(['messaging.js']); ?>
 </body>
 </html>

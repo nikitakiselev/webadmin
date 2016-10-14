@@ -36,6 +36,11 @@ Router::connect('/usersManager/:action/*', [
     'controller' => 'usersManager',
 ]);
 
+Router::connect('/message/send', [
+    'controller' => 'message',
+    'action' => 'send',
+]);
+
 Router::connect('/:web_user_name', array(
     'controller' => 'users',
     'action' => 'public_url',
