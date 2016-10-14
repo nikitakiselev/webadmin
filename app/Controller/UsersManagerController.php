@@ -24,7 +24,9 @@ class UsersManagerController extends AppController
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array(
+        'Paginator'
+    );
 
     /**
      * Paginator options
@@ -37,6 +39,17 @@ class UsersManagerController extends AppController
             'User.id' => 'desc'
         )
     );
+
+    public function beforeFilter()
+    {
+        parent::beforeFilter();
+
+        $user = $this->Auth->user('User');
+
+        if (! $user || $user['type'] !== 'admin') {
+            return $this->redirect(array("controller" => "admin"));
+        }
+    }
 
     /**
      * Index page

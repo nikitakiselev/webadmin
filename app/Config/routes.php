@@ -31,17 +31,10 @@ Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'a
 Router::connect('/usersManager', [
     'controller' => 'usersManager',
     'action' => 'index',
-    'admin' => true,
 ]);
 Router::connect('/usersManager/:action/*', [
     'controller' => 'usersManager',
-    'admin' => true,
 ]);
-//Router::connect('/users-manager/:id/edit', [
-//    'controller' => 'usersManager',
-//    'action' => 'edit',
-//    'admin' => true,
-//], array("id" => "[0-9]+"));
 
 Router::connect('/:web_user_name', array(
     'controller' => 'users',
