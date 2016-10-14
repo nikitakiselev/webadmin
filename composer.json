@@ -31,6 +31,7 @@
 		"lib/Cake/Console/cake"
 	],
 	"autoload": {
-		"files": ["app/Support/helpers.php"]
+		"files": ["app/Support/helpers.php"],
+		"classmap": ["app/Support/"]
 	}
 }

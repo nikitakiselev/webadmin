@@ -1,59 +1,29 @@
 <?php
 
-/**
- * Static content controller.
- *
- * This file will render views from views/pages/
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
 App::uses('AppController', 'Controller');
 
-use Parse\ParseClient;
-use Parse\ParseQuery;
-use Parse\ParseObject;
 use Parse\ParseACL;
 use Parse\ParsePush;
 use Parse\ParseUser;
-use Parse\ParseInstallation;
-use Parse\ParseException;
-use Parse\ParseAnalytics;
 use Parse\ParseFile;
 use Parse\ParseCloud;
+use Parse\ParseQuery;
+use Parse\ParseObject;
+use Parse\ParseClient;
+use Parse\ParseException;
+use Parse\ParseAnalytics;
+use Parse\ParseInstallation;
 
 @ob_start();
 @session_start();
 
-/**
- * Static content controller
- *
- * Override this controller by placing a copy in controllers directory of an application
- *
- * @package       app.Controller
- * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
- */
-class UsersController extends AppController {
-
-    /**
-     * This controller does not use a model
-     *
-     * @var array
-     */
+class UsersController extends AppController
+{
     public $uses = array('User', 'Subscription');
     public $layout = "furniture_dash";
 
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         parent::beforeFilter();
 
         // Init parse
@@ -61,17 +31,16 @@ class UsersController extends AppController {
         ParseClient::setServerURL(env('PARSE_SERVER_URL'), 'parse');
 
         $userId = $this->Auth->user('User.id');
-       
 
         $action = $this->request->params['action'];
         if (empty($userId) && ($action != "user_login" && $action != "login" && $action != "public_url" && $action != "record_video" && $action != "save_video")) {
-	    $subdomain = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
-	    if(strcasecmp('admin', $subdomain) == 0){
-            	$this->redirect(array("controller" => "admin"));
-	    }
-	    else{
-            	$this->redirect(array("controller" => "users", "action" => "user_login"));
-	    }            
+            $exploded = explode(".",$_SERVER['HTTP_HOST']);
+	        $subdomain = array_shift($exploded);
+            if(strcasecmp('admin', $subdomain) == 0){
+                    $this->redirect(array("controller" => "admin"));
+            } else {
+                    $this->redirect(array("controller" => "users", "action" => "user_login"));
+            }
         }
     }
 
@@ -177,11 +146,12 @@ class UsersController extends AppController {
         return false;
     }
 
-    public function home() {
-
+    public function home()
+    {
         if (!$this->Session->read('Auth.User')) {
             $this->redirect(array("controller" => "users", "action" => "user_login"));
         }
+
         $type = $this->Auth->user('User.type');
         if ($this->request->is('post') && $type == 'facebook') {
             $web_user_name = $this->data['web_user_name'];

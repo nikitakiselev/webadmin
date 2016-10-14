@@ -49,6 +49,7 @@ class ComposerStaticInit095d20496c73acff42988c2fc75458d1
     );
 
     public static $classMap = array (
+        'App\\Support\\Validator\\Validator' => __DIR__ . '/../..' . '/app/Support/Validator/Validator.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',

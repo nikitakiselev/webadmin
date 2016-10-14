@@ -750,3 +750,42 @@ video{
     display: inline-block;
     font-family: "Glyphicons Halflings" !important;
 }
+
+.table-toolbar {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid gray;
+}
+.user-manager-form {
+    margin-bottom: 20px;
+}
+
+.user-manager-form .input {
+    margin-bottom: 20px;
+}
+
+.user-manager-form .input > label {
+    margin-right: 10px;
+}
+
+.user-manager-form .input > input,
+.user-manager-form .input.select > select {
+    border: 1px solid gray;
+    padding: 3px 5px;
+    width: 100%;
+}
+
+.user-manager-form .submit > input[type="submit"] {
+    padding: 10px;
+}
+
+.user-manager-form .input.error .form-error {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: none;
+
+}
+
+.user-manager-form .input.error .error-message {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
