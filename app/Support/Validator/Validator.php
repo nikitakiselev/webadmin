@@ -211,4 +211,15 @@ class Validator
     {
         $this->extendedRules[$rule] = $function;
     }
+
+    /**
+     * Set message for the field
+     *
+     * @param $field
+     * @param $message
+     */
+    public function addMessage($field, $message)
+    {
+        $this->messages[$field] = $message;
+    }
 }

@@ -28,6 +28,11 @@
 Router::connect('/', array('controller' => 'users', 'action' => 'home'));
 Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'admin' => true));
 
+Router::connect('/usersManager', [
+    'controller' => 'usersManager',
+    'action' => 'index',
+    'admin' => true,
+]);
 Router::connect('/usersManager/:action/*', [
     'controller' => 'usersManager',
     'admin' => true,

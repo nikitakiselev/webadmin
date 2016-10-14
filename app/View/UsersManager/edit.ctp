@@ -10,7 +10,7 @@
         <div class="panel-body">
             <div class="user-manager-form">
                 <?php echo $this->Form->create('User'); ?>
-                    <?php echo $this->Form->input('username'); ?>
+                    <?php echo $this->Form->input('username', ['class' => 'form-control']); ?>
 
                     <div class="input">
                         <label for="UserStatus">
@@ -18,25 +18,26 @@
                         </label>
                     </div>
 
-                    <?php echo $this->Form->input('first_name'); ?>
-                    <?php echo $this->Form->input('last_name'); ?>
-                    <?php echo $this->Form->input('company'); ?>
-                    <?php echo $this->Form->input('zipcode'); ?>
-                    <?php echo $this->Form->input('email'); ?>
-                    <?php echo $this->Form->input('mobile'); ?>
+                    <?php echo $this->Form->input('first_name', ['class' => 'form-control']); ?>
+                    <?php echo $this->Form->input('last_name', ['class' => 'form-control']); ?>
+                    <?php echo $this->Form->input('company', ['class' => 'form-control']); ?>
+                    <?php echo $this->Form->input('zipcode', ['class' => 'form-control']); ?>
+                    <?php echo $this->Form->input('email', ['class' => 'form-control']); ?>
+                    <?php echo $this->Form->input('mobile', ['class' => 'form-control']); ?>
                     <?php echo $this->Form->input('type', [
                         'options' => [
                             'admin' => 'Administrator',
                             'subscriber' => 'Subscriber',
                             'investor' => 'Investor',
                         ],
+                        'class' => 'form-control',
                     ]); ?>
                 <?php echo $this->Form->end('Update user'); ?>
             </div>
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-danger">
         <div class="panel-heading">
             <h3 class="panel-title">Change user's password</h3>
         </div>
@@ -70,7 +71,9 @@
                     </div>
 
                     <div class="input">
-                        <button type="submit" class="btn btn-primary">Change password</button>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-key"></i> Change password
+                        </button>
                     </div>
                 </form>
             </div>

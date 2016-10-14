@@ -26,11 +26,51 @@ class UsersManagerController extends AppController
      */
     public $components = array('Paginator');
 
+    /**
+     * Paginator options
+     *
+     * @var array
+     */
+    public $paginate = array(
+        'limit' => 20,
+        'order' => array(
+            'User.id' => 'desc'
+        )
+    );
+
+    /**
+     * Index page
+     */
     public function index()
     {
-        $users = $this->User->find('all');
+        $this->Paginator->settings = $this->paginate;
+
+        $users = $this->Paginator->paginate('User');
 
         $this->set('users', $users);
+    }
+
+    /**
+     * Create new user
+     */
+    public function add()
+    {
+        if ($this->request->is('post')) {
+            $this->User->create();
+
+            if ($this->User->save($this->request->data)) {
+
+                $this->Session->setFlash(__('New user was created.'), 'success');
+
+                $this->redirect([
+                    'action' => 'index',
+                ]);
+            }
+
+            $this->Session->setFlash(
+                __('The user could not be created. Please, try again.', 'error')
+            );
+        }
     }
 
     /**
@@ -54,7 +94,9 @@ class UsersManagerController extends AppController
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('User has been updated!'), 'success');
 
-                return $this->redirect('/usersManager/index');
+                return $this->redirect([
+                    'action' => 'index'
+                ]);
             }
 
             $this->Session->setFlash(__('Unable to update this user.'), 'errors');
@@ -67,17 +109,17 @@ class UsersManagerController extends AppController
         }
     }
 
-    public function changePassword()
+    /**
+     * Change user password
+     *
+     * @param null $id
+     */
+    public function changePassword($id = null)
     {
         if ($this->request->is('post')) {
-
             $v = new \App\Support\Validator\Validator($this->request->data, [
-                'new_password' => 'required|confirmed|custom_rule:param1,param2',
+                'new_password' => 'required|confirmed|password',
             ]);
-
-            $v->extend('custom_rule', function ($value, $field, $rule, $param1, $param2) {
-                dd($value, $field, $rule, $param1, $param2);
-            });
 
             if ($v->fails()) {
                 $_SESSION['errors'] = $v->errors();
@@ -86,7 +128,48 @@ class UsersManagerController extends AppController
                 return $this->redirect($this->referer());
             }
 
-            $this->Session->setFlash('Password changed', 'success');
+            $user = $this->User->findById($id);
+
+            if (! $user) {
+                throw new NotFoundException(__('Invalid user'));
+            }
+
+            $this->User->id = $id;
+
+            if ($this->User->saveField('password', $this->request->data('new_password'))) {
+                $this->Session->setFlash(__('The user password has been updated'), 'success');
+
+                return $this->redirect($this->referer());
+            }
+
+            $this->Session->setFlash(
+                __('The user password could not be updated. Please, try again.', 'error')
+            );
         }
+
+        return $this->redirect($this->referer());
+    }
+
+    /**
+     * Delete user
+     *
+     * @param $id
+     */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+
+        if ($this->User->delete($id)) {
+            $this->Session->setFlash(
+                __('The user with id: %s has been deleted.', h($id)), 'success'
+            );
+        } else {
+            $this->Session->setFlash(
+                __('The user with id: %s could not be deleted.', h($id)), 'error'
+            );
+        }
+
+        return $this->redirect(array('action' => 'index'));
     }
 }

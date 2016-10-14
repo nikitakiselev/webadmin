@@ -10,7 +10,7 @@ if (! function_exists('dd')) {
     function dd()
     {
         array_map(function ($x) {
-            debug($x);
+            debug($x, true, false);
         }, func_get_args());
         die(1);
     }

@@ -2,12 +2,12 @@
     <h1 class="page-header">Users manager</h1>
 
     <div class="table-toolbar">
-        <a href="/usersManager/create" class="btn btn-primary">
+        <a href="/usersManager/add" class="btn btn-primary">
             <i class="fa fa-plus"></i> Create new user
         </a>
     </div>
 
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>ID</th>
@@ -49,9 +49,21 @@
                     <a href="/usersManager/edit/<?= $user['User']['id']; ?>" class="btn btn-xs btn-primary">
                         <i class="fa fa-pencil"></i> Edit
                     </a>
+
+                    <?php
+                        echo $this->Form->postLink(
+                            'Delete',
+                            array('action' => 'delete', $user['User']['id']),
+                            array('confirm' => 'Are you sure?', 'class' => 'btn btn-danger btn-xs')
+                        );
+                    ?>
                 </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
+
+    <nav aria-label="Page navigation">
+        <?php echo $this->Paginator->numbers(array('first' => 'First page')); ?>
+    </nav>
 </div>
