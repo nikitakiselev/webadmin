@@ -9,7 +9,7 @@
         </div>
 
         <div class="panel-body">
-            <p>Message receiver: <span id="receiver"></span></p>
+            <p><strong>Message receiver:</strong> <span id="receiver"></span></p>
 
             <form action="/message/send" method="post" class="message-form">
                 <input type="hidden" name="object_id" value="">
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button id="sendBtn" class="btn btn-primary" data-loading-text="Sending message...">
+                    <button id="sendBtn" class="btn btn-primary btn-submit" data-loading-text="Sending message...">
                         <i class="fa fa-paper-plane-o"></i> Send message
                     </button>
                 </div>

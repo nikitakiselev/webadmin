@@ -139,7 +139,7 @@
                         class="glyphicon glyphicon-th"></span>Grid</a>
             </div>
         </div>
-        <div id="products" class="row list-group">
+        <div id="products" class="row list-group products-row">
 
             <?php
             if (!empty($datalist)) {
@@ -203,7 +203,6 @@
                 <?php
             }
             ?>
-
         </div>
     </div>
     <div id="targetDiv"></div>

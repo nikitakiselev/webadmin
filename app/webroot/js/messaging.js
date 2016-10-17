@@ -7,10 +7,12 @@
      */
 
     var $messagePopup = $('#message-popup'),
+        $popupCloseBtn = $messagePopup.find('[data-action="close"]'),
         $receiver = $messagePopup.find('#receiver'),
         $message = $messagePopup.find('#message'),
         $messageForm = $messagePopup.find('.message-form'),
-        $sendButton = $messagePopup.find('#sendBtn');
+        $sendButton = $messagePopup.find('#sendBtn'),
+        canClose = true; // can close popup
 
     function showMessagePopup($button, username, objectid) {
         $receiver.html(username);
@@ -52,6 +54,27 @@
             top: messagesTop,
             left: messagesLeft
         });
+
+        $messageForm
+            .trigger('reset')
+            .find('.alert')
+            .remove();
+    }
+
+    function showMessage(message, status) {
+
+        status = status || 'success';
+
+        $messageForm.find('.alert').remove();
+
+        var $message = $('<div>').hide();
+
+        $message
+            .addClass('alert alert-'+status)
+            .html(message);
+
+        $messageForm.prepend($message);
+        $message.slideDown();
     }
 
     $sendButton.on('click', function (event) {
@@ -59,18 +82,32 @@
 
         $button.prop("disabled", true)
             .data('old-html', $button.html())
-            .html($button.data('loading-text'));
+            .html(
+                '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>' +
+                $button.data('loading-text')
+            );
 
+        $messageForm.find('.alert').remove();
         $messageForm.find('input,textarea,select').prop('readonly', true);
+        $popupCloseBtn.prop("disabled", true);
+
+        canClose = false;
 
         $.post($messageForm.attr('action'), $messageForm.serialize(), function (response) {
-            console.log(response);
+            showMessage(response.message, response.status);
+
+            if (response.status === 'success') {
+                $messageForm.trigger('reset');
+            }
         }, 'json')
             .always(function () {
                 $button.prop("disabled", false)
                     .html($button.data('old-html'));
 
                 $messageForm.find('input,textarea,select').prop('readonly', false);
+
+                canClose = true;
+                $popupCloseBtn.prop("disabled", false);
             })
             .error(function (error) {
                 alert(error.responseText);
@@ -78,7 +115,10 @@
     });
 
     $messagePopup.on('click', '[data-action="close"]', function (event) {
-        $messagePopup.removeClass('showing');
+        if (canClose) {
+            $messagePopup.removeClass('showing');
+        }
+
         event.preventDefault();
     });
 

@@ -800,7 +800,7 @@ video{
     opacity: 0;
     pointer-events: none;
     will-change: transform;
-    transition: opacity .4s, transform .5s;
+    transition: opacity .4s, transform .5s, top .3s, left .3s;
     transform: translateY(-50px);
 }
 
@@ -818,4 +818,12 @@ video{
 .message-popup .message-input {
     max-width: 100%;
     min-height: 100px;
+}
+
+.btn-submit > .fa {
+    margin-right: 5px;
+}
+
+.products-row {
+    position: relative;
 }
