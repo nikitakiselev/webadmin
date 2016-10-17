@@ -177,6 +177,7 @@
                                     <div class="col-xs-6 col-md-5" <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type']!='subscriber'){?>style="margin: 10px 0 0 44px;"<?php }else{?>style="margin: 10px 0 0 0px;"<?php }?>>
                                         <a class="btn btn-info" href="javascript:void(0);" onclick="doDownload('<?php echo $list['objectId'] ?>','<?php echo $list['video_url'] ?>')">Download</a>
 
+
                     <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type'] === 'investor'){?>
                                         <a href="#"
                                            class="btn btn-danger"
