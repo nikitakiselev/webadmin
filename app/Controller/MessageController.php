@@ -11,8 +11,24 @@ class MessageController extends AppController
 {
     public $uses = array('User', 'Message');
 
+    /**
+     * Storing message in database
+     */
     public function send()
     {
+        if (! $this->request->is('post')) {
+            return $this->redirect('/');
+        }
+
+        $user = $this->Auth->user('User');
+
+        if ($user['type'] !== 'investor') {
+            return $this->sendJson([
+                'status' => 'error',
+                'message' => 'Only investor can do this'
+            ]);
+        }
+
         $v = new Validator($this->request->data, [
             'message' => 'required',
             'object_id' => 'required',
@@ -26,8 +42,6 @@ class MessageController extends AppController
                 'message' => $this->formatErrors($v->errors()),
             ]);
         }
-
-        $user = $this->Auth->user('User');
 
         // Store message in database
         $this->Message->create();

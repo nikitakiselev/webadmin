@@ -176,6 +176,8 @@
                                     </div>
                                     <div class="col-xs-6 col-md-5" <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type']!='subscriber'){?>style="margin: 10px 0 0 44px;"<?php }else{?>style="margin: 10px 0 0 0px;"<?php }?>>
                                         <a class="btn btn-info" href="javascript:void(0);" onclick="doDownload('<?php echo $list['objectId'] ?>','<?php echo $list['video_url'] ?>')">Download</a>
+
+                    <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type'] === 'investor'){?>
                                         <a href="#"
                                            class="btn btn-danger"
                                            data-toggle="collaboration"
@@ -184,6 +186,7 @@
                                         >
                                             Collaboration
                                         </a>
+                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +211,9 @@
     <div id="targetDiv"></div>
     <div id="chatbar" style="overflow-y: hidden; height: 288px; display: inline; overflow-x: scroll; width: auto;"></div>
 
+    <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type'] === 'investor'){?>
     <?php print $this->element('message_popup'); ?>
+    <?php } ?>
 </section>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script>
