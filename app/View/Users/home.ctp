@@ -139,7 +139,7 @@
                         class="glyphicon glyphicon-th"></span>Grid</a>
             </div>
         </div>
-        <div id="products" class="row list-group">
+        <div id="products" class="row list-group products-row">
 
             <?php
             if (!empty($datalist)) {
@@ -176,7 +176,14 @@
                                     </div>
                                     <div class="col-xs-6 col-md-5" <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type']!='subscriber'){?>style="margin: 10px 0 0 44px;"<?php }else{?>style="margin: 10px 0 0 0px;"<?php }?>>
                                         <a class="btn btn-info" href="javascript:void(0);" onclick="doDownload('<?php echo $list['objectId'] ?>','<?php echo $list['video_url'] ?>')">Download</a>
-
+                                        <a href="#"
+                                           class="btn btn-danger"
+                                           data-toggle="collaboration"
+                                           data-objectid="<?php echo $list['objectId'] ?>"
+                                           data-username="<?php echo $list["user_name"]; ?>"
+                                        >
+                                            Collaboration
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -196,11 +203,12 @@
                 <?php
             }
             ?>
-
         </div>
     </div>
     <div id="targetDiv"></div>
     <div id="chatbar" style="overflow-y: hidden; height: 288px; display: inline; overflow-x: scroll; width: auto;"></div>
+
+    <?php print $this->element('message_popup'); ?>
 </section>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script>
