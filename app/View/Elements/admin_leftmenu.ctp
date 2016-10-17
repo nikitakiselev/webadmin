@@ -20,7 +20,9 @@ $userImage = "avatar5.png";
                 <?php echo $this->Html->link("Pitch Feed", array("controller"=>"users", "action"=>"home"), array("class"=>"menu_links", "rel"=>"table_box"));?>
             </li>
 
-            <li><?php echo $this->Html->link("Manage users", '/usersManager/index', array("class"=>"menu_links", "rel"=>"table_box"));?></li>
+            <?php if ($userInfo['User']['type'] === 'admin'): ?>
+                <li><?php echo $this->Html->link("Manage users", '/usersManager/index', array("class"=>"menu_links", "rel"=>"table_box"));?></li>
+          <?php endif; ?>
         </ul>
         <?php }?>
     </section>
