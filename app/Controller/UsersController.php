@@ -268,7 +268,7 @@ class UsersController extends AppController
     public function user_login($user = '') {
 
         $this->layout = "furniture";
-        if ($this->data['User']['username']) {
+        if (isset($this->data['User']) && $this->data['User']['username']) {
             //$user = ParseUser::logIn("ash@king.com", "123456");		
             /* $user = ParseUser::logIn($this->data['User']['username'], $this->data['User']['password']);			
               if (!empty($user)) {
@@ -353,7 +353,7 @@ class UsersController extends AppController
                         $this->Session->setFlash(__('Incorrect username or password'), 'error');
                         $this->redirect(array("controller" => "users", "action" => "login"));
                     }
-                } else if ($user['User']['type'] == 'subscriber') {
+                } else if ($user['User']['type'] == 'subscriber' || $user['User']['type'] == 'investor') {
                     $this->loadModel('Subscription');
                     $sub = $this->Subscription->find('first', array('conditions' => array('Subscription.stripe_payment_status' => 1, 'Subscription.user_id' => $user['User']['id'])));
                     if ($sub) {

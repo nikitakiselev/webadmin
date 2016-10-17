@@ -52,6 +52,7 @@ class AppController extends Controller {
         $host = $dataSource->config['host'];
 
         $this->loadModel('User');
+        $this->loadModel('Subscription');
 
         if (!defined('webURL')) {
             if ($host == "localhost")
