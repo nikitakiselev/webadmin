@@ -1,5 +1,8 @@
 <?php
 
+use Parse\ParseQuery;
+use Parse\ParseClient;
+use Parse\ParseObject;
 use App\Support\Validator\Validator;
 
 App::uses('AppController', 'Controller');
@@ -9,7 +12,7 @@ App::uses('AppController', 'Controller');
 
 class MessageController extends AppController
 {
-    public $uses = array('User', 'Message');
+    public $uses = array('User');
 
     /**
      * Storing message in database
@@ -23,7 +26,7 @@ class MessageController extends AppController
         $user = $this->Auth->user('User');
 
         if ($user['type'] !== 'investor') {
-            return $this->sendJson([
+            return $this->jsonReponse([
                 'status' => 'error',
                 'message' => 'Only investor can do this'
             ]);
@@ -37,38 +40,24 @@ class MessageController extends AppController
         $v->addMessage('required', 'Please, enter your message to the textarea.');
 
         if ($v->fails()) {
-            return $this->sendJson([
+            return $this->jsonReponse([
                 'status' => 'danger',
                 'message' => $this->formatErrors($v->errors()),
             ]);
         }
 
-        // Store message in database
-        $this->Message->create();
-        $this->Message->save([
-            'content' => $this->request->data('message'),
-            'object_id' => $this->request->data('object_id'),
-            'user_id' => $user['id'],
-        ]);
+        $pitchId = $this->request->data('object_id');
+        $message = $this->request->data('message');
 
-        return $this->sendJson([
+        $investor = $this->fetchInvestorInformation($user);
+
+        $this->storeMessage($investor, $pitchId, $message);
+
+        return $this->jsonReponse([
             'status' => 'success',
             'message' => 'Your message was sent.',
             'message_text' => $this->request->data('message'),
         ]);
-    }
-
-    /**
-     * Send json response
-     *
-     * @param $data
-     */
-    private function sendJson($data)
-    {
-        $this->autoRender = false;
-        $this->response->type('json');
-        $json = json_encode($data);
-        $this->response->body($json);
     }
 
     /**
@@ -88,5 +77,42 @@ class MessageController extends AppController
         $result .= '</ul>';
 
         return $result;
+    }
+
+    /**
+     * Store investor message
+     *
+     * @param array $investor
+     * @param int $pitchId
+     * @param string $message
+     */
+    protected function storeMessage($investor, $pitchId, $message)
+    {
+        ParseClient::initialize(env('PARSE_APP_ID'), env('PARSE_REST_KEY'), env('PARSE_MASTER_KEY'));
+        ParseClient::setServerURL(env('PARSE_SERVER_URL'), 'parse');
+
+        $query = new ParseQuery('User_Pitch');
+        $pitch = $query->get($pitchId);
+
+        $object = ParseObject::create('InvestorMessage');
+        $object->setAssociativeArray('investor', $investor);
+        $object->set('pitch', $pitch);
+        $object->set('message', $message);
+        $object->save();
+    }
+
+    /**
+     * Fetch current authenticated user-investor information
+     *
+     * @param array $user Current auth user information
+     * @return array user-investor information
+     */
+    private function fetchInvestorInformation(array $user)
+    {
+        $attributes = ['id', 'username', 'email', 'mobile', 'first_name', 'last_name', 'company', 'zipcode'];
+
+        return array_filter($user, function ($attribute) use ($attributes) {
+            return in_array($attribute, $attributes);
+        }, ARRAY_FILTER_USE_KEY);
     }
 }
