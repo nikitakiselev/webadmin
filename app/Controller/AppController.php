@@ -92,4 +92,16 @@ class AppController extends Controller {
         }
     }
 
+    /**
+     * Send json response
+     *
+     * @param $data
+     */
+    protected function jsonReponse($data)
+    {
+        $this->autoRender = false;
+        $this->response->type('json');
+        $json = json_encode($data);
+        $this->response->body($json);
+    }
 }
