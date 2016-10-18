@@ -9,7 +9,6 @@
     var $messagePopup = $('#message-popup'),
         $popupCloseBtn = $messagePopup.find('[data-action="close"]'),
         $receiver = $messagePopup.find('#receiver'),
-        $message = $messagePopup.find('#message'),
         $messageForm = $messagePopup.find('.message-form'),
         $sendButton = $messagePopup.find('#sendBtn'),
         canClose = true; // can close popup

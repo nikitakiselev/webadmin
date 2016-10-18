@@ -1,5 +1,7 @@
 <?php
 
+use App\Support\Validator\Validator;
+
 App::uses('AppController', 'Controller');
 
 @ob_start();
@@ -130,7 +132,7 @@ class UsersManagerController extends AppController
     public function changePassword($id = null)
     {
         if ($this->request->is('post')) {
-            $v = new \App\Support\Validator\Validator($this->request->data, [
+            $v = new Validator($this->request->data, [
                 'new_password' => 'required|confirmed|password',
             ]);
 
