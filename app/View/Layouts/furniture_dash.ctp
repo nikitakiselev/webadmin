@@ -55,6 +55,7 @@ $siteDescription = "30 Second Pitch Admin Panel";
         <!-- Script for jQueryUI dialog Widget -->
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
         <?php echo $this->Html->script(array("css3-mediaqueries.js", "jquery.validate.js", "jquery.raty.js", "admin.js")); ?>
+    <?php echo $this->Html->script(['messaging.js']); ?>
 </head>
 <body>
     <header class="header">
@@ -78,6 +79,5 @@ $siteDescription = "30 Second Pitch Admin Panel";
         </aside>
     </div>
     <?php echo $this->element('sql_dump'); ?>
-    <?php echo $this->Html->script(['messaging.js']); ?>
 </body>
 </html>

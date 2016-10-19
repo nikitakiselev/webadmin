@@ -14,6 +14,14 @@ class MessageController extends AppController
 {
     public $uses = array('User');
 
+    public function __construct($request = null, $response = null)
+    {
+        parent::__construct($request, $response);
+
+        ParseClient::initialize(env('PARSE_APP_ID'), env('PARSE_REST_KEY'), env('PARSE_MASTER_KEY'));
+        ParseClient::setServerURL(env('PARSE_SERVER_URL'), 'parse');
+    }
+
     /**
      * Storing message in database
      */
@@ -51,7 +59,14 @@ class MessageController extends AppController
 
         $investor = $this->fetchInvestorInformation($user);
 
-        $this->storeMessage($investor, $pitchId, $message);
+        $query = new ParseQuery('User_Pitch');
+        $query->includeKey('user_id');
+        $pitch = $query->get($pitchId);
+
+        $sender = $investor['username'];
+        $receiver = $pitch->get('user_id')->get('name');
+
+        $this->storeMessage($sender, $receiver, $pitchId, $message);
 
         return $this->jsonReponse([
             'status' => 'success',
@@ -82,20 +97,19 @@ class MessageController extends AppController
     /**
      * Store investor message
      *
-     * @param array $investor
+     * @param string $sender
+     * @param string $receiver
      * @param int $pitchId
      * @param string $message
      */
-    protected function storeMessage($investor, $pitchId, $message)
+    protected function storeMessage($sender, $receiver, $pitchId, $message)
     {
-        ParseClient::initialize(env('PARSE_APP_ID'), env('PARSE_REST_KEY'), env('PARSE_MASTER_KEY'));
-        ParseClient::setServerURL(env('PARSE_SERVER_URL'), 'parse');
-
         $query = new ParseQuery('User_Pitch');
         $pitch = $query->get($pitchId);
 
         $object = ParseObject::create('InvestorMessage');
-        $object->setAssociativeArray('investor', $investor);
+        $object->set('sender', $sender);
+        $object->set('receiver', $receiver);
         $object->set('pitch', $pitch);
         $object->set('message', $message);
         $object->save();
@@ -114,5 +128,36 @@ class MessageController extends AppController
         return array_filter($user, function ($attribute) use ($attributes) {
             return in_array($attribute, $attributes);
         }, ARRAY_FILTER_USE_KEY);
+    }
+
+    public function load($pitchId)
+    {
+        $user = $this->Auth->user('User');
+
+        $query = new ParseQuery('User_Pitch');
+        $pitch = $query->get($pitchId);
+
+        $senderQuery = new ParseQuery('InvestorMessage');
+        $senderQuery->equalTo('sender', $user['username']);
+
+        $receiverQuery = new ParseQuery('InvestorMessage');
+        $receiverQuery->equalTo('receiver', $user['username']);
+
+        $mainQuery = ParseQuery::orQueries([$senderQuery, $receiverQuery]);
+        $mainQuery->equalTo('pitch', $pitch);
+        $messages = $mainQuery->find();
+
+        $messages = array_map(function ($message) use ($user) {
+            return [
+                'sender' => $message->get('sender'),
+                'receiver' => $message->get('receiver'),
+                'content' => $message->get('message'),
+                'color' => $message->get('sender') === $user['username'] ? 'red' : '',
+            ];
+        }, $messages);
+
+        $this->jsonReponse([
+            'messages' => $messages
+        ]);
     }
 }

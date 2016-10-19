@@ -1,5 +1,6 @@
 <script type="text/javascript">
     var webURL = "<?php echo $this->webroot; ?>";
+    var userType = '<?php print $AuthUser['User']['type']; ?>';
 </script>
 <style>
     .glyphicon { margin-right:5px; }
@@ -148,7 +149,7 @@
                     ?>
                     <div class="item  col-xs-4 col-lg-4" id="<?php echo $list['objectId'] ?>">
                         <div class="thumbnail">
-                            <a href="#" onclick="doNav('<?php echo $list['video_url'] ?>', '<?php echo $list['user_name'] ?>', '<?php echo $list['timeDiff'] ?>', '<?php echo $list['pitch_deck'] ?>')">
+                            <a href="#" onclick="doNav('<?php echo $list['video_url'] ?>', '<?php echo $list['user_name'] ?>', '<?php echo $list['timeDiff'] ?>', '<?php echo $list['pitch_deck'] ?>', '<?php echo $list['objectId'] ?>')">
                                 <img class="group list-group-image" src="<?php echo $list['thumb']; ?>" alt="" style="height: 250px" />
                             </a>
                             <div class="caption">
@@ -176,18 +177,6 @@
                                     </div>
                                     <div class="col-xs-6 col-md-5" <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type']!='subscriber'){?>style="margin: 10px 0 0 44px;"<?php }else{?>style="margin: 10px 0 0 0px;"<?php }?>>
                                         <a class="btn btn-info" href="javascript:void(0);" onclick="doDownload('<?php echo $list['objectId'] ?>','<?php echo $list['video_url'] ?>')">Download</a>
-
-
-                    <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type'] === 'investor'){?>
-                                        <a href="#"
-                                           class="btn btn-danger"
-                                           data-toggle="collaboration"
-                                           data-objectid="<?php echo $list['objectId'] ?>"
-                                           data-username="<?php echo $list["user_name"]; ?>"
-                                        >
-                                            Collaboration
-                                        </a>
-                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -211,11 +200,12 @@
     </div>
     <div id="targetDiv"></div>
     <div id="chatbar" style="overflow-y: hidden; height: 288px; display: inline; overflow-x: scroll; width: auto;"></div>
-
-    <?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type'] === 'investor'){?>
-    <?php print $this->element('message_popup'); ?>
-    <?php } ?>
 </section>
+
+<?php if(isset($AuthUser['User']['type']) && $AuthUser['User']['type'] === 'investor'){?>
+    <?php print $this->element('investor_chat'); ?>
+<?php } ?>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script>
                                     $(document).ready(function () {
@@ -275,7 +265,7 @@
 
     }
 
-    function doNav(theUrl, thename, thediff, pitch_deck)
+    function doNav(theUrl, thename, thediff, pitch_deck, pitchId)
     {
         var myDiv = $("#player");
         var usernameContainer = $("#username");
@@ -300,6 +290,10 @@
         $("#myfileplayer").on("click", function () {
             $(this).play();
         });
+
+        if (userType === 'investor') {
+            window.showChat('<?php print $AuthUser['User']['username']; ?>', thename, pitchId);
+        }
     }
 
     $(function () {
