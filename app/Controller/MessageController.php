@@ -72,6 +72,7 @@ class MessageController extends AppController
             'status' => 'success',
             'message' => 'Your message was sent.',
             'message_text' => $this->request->data('message'),
+            'color' => $user['color'],
         ]);
     }
 
@@ -152,7 +153,7 @@ class MessageController extends AppController
                 'sender' => $message->get('sender'),
                 'receiver' => $message->get('receiver'),
                 'content' => $message->get('message'),
-                'color' => $message->get('sender') === $user['username'] ? 'red' : '',
+                'color' => $message->get('sender') === $user['username'] ? $user['color'] : '',
             ];
         }, $messages);
 

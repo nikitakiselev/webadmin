@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `color` VARCHAR(10) NULL AFTER `zipcode`;

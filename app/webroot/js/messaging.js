@@ -31,13 +31,13 @@
                     var messageClass = message.sender === sender ? ' message-sender' : ' message-receiver';
                     var styles = message.color ? ` style="background-color:${message.color};"` : '';
                     html += `
-                    <div class="message-row message-sender${messageClass}">
-                        <div class="message-item"${styles}>
-                            <div class="username">${message.sender}</div>
-                            <div class="message-content">${message.content}</div>
+                        <div class="message-row message-sender${messageClass}">
+                            <div class="message-item"${styles}>
+                                <div class="username">${message.sender}</div>
+                                <div class="message-content">${message.content}</div>
+                            </div>
                         </div>
-                    </div>
-                `
+                    `
                 });
 
                 $messages.html(html);
@@ -63,9 +63,12 @@
                     .prop('disabled', true);
 
                 $.post($chatForm.attr('action'), $chatForm.serialize(), function (response) {
+
+                    var styles = response.color ? ` style="background-color:${response.color};"` : '';
+
                     $messages.append(`
                         <div class="message-row message-sender">
-                            <div class="message-item">
+                            <div class="message-item"${styles}>
                                 <div class="username">${sender}</div>
                                 <div class="message-content">${response.message_text}</div>
                             </div>

@@ -1,5 +1,7 @@
 <?php
 
+use Colors\RandomColor;
+
 App::uses('AuthComponent', 'Controller/Component');
 
 class User extends AppModel
@@ -65,6 +67,11 @@ class User extends AppModel
     {
         if (isset($this->data['User']['password'])) {
             $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        }
+
+        // assign colors to new users
+        if (! $this->id) {
+            $this->data['User']['color'] = RandomColor::one(array('luminosity'=>'light'));
         }
 
         return true;

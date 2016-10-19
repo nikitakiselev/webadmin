@@ -26,6 +26,7 @@ class ComposerStaticInit095d20496c73acff42988c2fc75458d1
         'C' => 
         array (
             'Composer\\Installers\\' => 20,
+            'Colors\\' => 7,
         ),
     );
 
@@ -45,6 +46,10 @@ class ComposerStaticInit095d20496c73acff42988c2fc75458d1
         'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
+        'Colors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mistic100/randomcolor/src',
         ),
     );
 

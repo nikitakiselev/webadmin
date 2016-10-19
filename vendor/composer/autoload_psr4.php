@@ -10,4 +10,5 @@ return array(
     'Parse\\' => array($vendorDir . '/parse/php-sdk/src/Parse'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
+    'Colors\\' => array($vendorDir . '/mistic100/randomcolor/src'),
 );
