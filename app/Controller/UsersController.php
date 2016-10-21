@@ -346,14 +346,14 @@ class UsersController extends AppController
             $user = $this->User->find("first", array("conditions" => array("username" => $this->data['User']['username'], "password" => $password_check)));
 
             if ($user) {
-                if ($user['User']['type'] == 'admin') {
+                if ($user['User']['type'] == 'admin' || $user['User']['type'] == 'investor') {
                     if ($this->Auth->login($user)) {
                         $this->redirect(array("controller" => "users", "action" => "home"));
                     } else {
                         $this->Session->setFlash(__('Incorrect username or password'), 'error');
                         $this->redirect(array("controller" => "users", "action" => "login"));
                     }
-                } else if ($user['User']['type'] == 'subscriber' || $user['User']['type'] == 'investor') {
+                } else if ($user['User']['type'] == 'subscriber') {
                     $this->loadModel('Subscription');
                     $sub = $this->Subscription->find('first', array('conditions' => array('Subscription.stripe_payment_status' => 1, 'Subscription.user_id' => $user['User']['id'])));
                     if ($sub) {
