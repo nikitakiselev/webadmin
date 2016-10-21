@@ -27,7 +27,7 @@
                     <?php echo $this->Form->input('type', [
                         'options' => [
                             'admin' => 'Administrator',
-                            'subscriber' => 'Subscriber',
+                            //'subscriber' => 'Subscriber',
                             'investor' => 'Investor',
                         ],
                         'class' => 'form-control',
