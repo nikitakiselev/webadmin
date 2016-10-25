@@ -294,15 +294,8 @@
 
                 $.each(response.messages, function (index, message) {
                     var messageClass = message.sender === sender ? ' message-sender' : ' message-receiver';
-                    var styles = message.color ? ` style="background-color:${message.color};"` : '';
-                    html += `
-                        <div class="message-row message-sender${messageClass}">
-                            <div class="message-item"${styles}>
-                                <div class="username">${message.sender}</div>
-                                <div class="message-content">${message.content}</div>
-                            </div>
-                        </div>
-                    `
+                    var styles = message.color ? ' style="background-color:' + message.color + ';"' : '';
+                    html += "\n    <div class=\"message-row message-sender" + messageClass + "\">\n        <div class=\"message-item\"" + styles + ">\n            <div class=\"username\">" + message.sender + "</div>\n            <div class=\"message-content\">" + message.content + "</div>\n        </div>\n    </div>\n";
                 });
 
                 $messages.html(html);
