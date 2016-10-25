@@ -329,16 +329,14 @@
 
                 $.post($chatForm.attr('action'), $chatForm.serialize(), function (response) {
 
-                    var styles = response.color ? ` style="background-color:${response.color};"` : '';
+                    var styles = response.color ? ' style="background-color:' + response.color + ';"' : '';
 
-                    $messages.append(`
-                        <div class="message-row message-sender">
-                            <div class="message-item"${styles}>
-                                <div class="username">${sender}</div>
-                                <div class="message-content">${response.message_text}</div>
-                            </div>
-                        </div>
-                    `);
+                    $messages.append('<div class="message-row message-sender">' +
+                        '<div class="message-item"' + styles + '>' +
+                            '<div class="username">' + sender + '</div>' +
+                            '<div class="message-content">' + response.message_text + '</div>' +
+                            '</div>' +
+                        '</div>');
 
                     $chatForm.find('.message-input').val('');
                     $messages.animate({scrollTop: $messages.prop("scrollHeight")}, 200);
