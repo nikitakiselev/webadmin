@@ -72,6 +72,7 @@ class MessageController extends AppController
             'status' => 'success',
             'message' => 'Your message was sent.',
             'message_text' => $this->request->data('message'),
+            'message_date' => (new DateTime('now', new DateTimeZone(date_default_timezone_get())))->format('d.m.Y H:i'),
             'color' => $user['color'],
         ]);
     }
@@ -149,7 +150,12 @@ class MessageController extends AppController
         $messages = $mainQuery->find();
 
         $messages = array_map(function ($message) use ($user) {
+            $date = $message->getCreatedAt()->setTimezone(
+                new DateTimeZone(date_default_timezone_get())
+            );
+
             return [
+                'date' => $date->format('d.m.Y H:i'),
                 'sender' => $message->get('sender'),
                 'receiver' => $message->get('receiver'),
                 'content' => $message->get('message'),

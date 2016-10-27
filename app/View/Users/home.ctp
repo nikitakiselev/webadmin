@@ -295,7 +295,13 @@
                 $.each(response.messages, function (index, message) {
                     var messageClass = message.sender === sender ? ' message-sender' : ' message-receiver';
                     var styles = message.color ? ' style="background-color:' + message.color + ';"' : '';
-                    html += "\n    <div class=\"message-row message-sender" + messageClass + "\">\n        <div class=\"message-item\"" + styles + ">\n            <div class=\"username\">" + message.sender + "</div>\n            <div class=\"message-content\">" + message.content + "</div>\n        </div>\n    </div>\n";
+                    html += "\n<div class=\"message-row" + messageClass + "\">\n" +
+                            "<div class=\"message-item\"" + styles + ">\n" +
+                            "<div class=\"username\">" + message.sender + "</div>\n" +
+                            "<div class=\"message-content\">" + message.content + "</div>\n" +
+                            '<span class="message-date">at ' + message.date + '</span>\n' +
+                            "</div>\n" +
+                            "</div>\n";
                 });
 
                 $messages.html(html);
@@ -328,6 +334,7 @@
                         '<div class="message-item"' + styles + '>' +
                             '<div class="username">' + sender + '</div>' +
                             '<div class="message-content">' + response.message_text + '</div>' +
+                            '<span class="message-date">at ' + response.message_date + '</span>\n' +
                             '</div>' +
                         '</div>');
 

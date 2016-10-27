@@ -833,7 +833,7 @@ video{
 }
 
 .investor-chat .messages .message-row {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .investor-chat .messages .message-row.message-sender {
@@ -845,6 +845,7 @@ video{
 }
 
 .investor-chat .messages .message-item {
+    position: relative;
     display: inline-block;
     border: 1px solid #dfdfdf;
     border-radius: 5px;
@@ -873,4 +874,24 @@ video{
 
 .investor-chat .no-messages {
     color: #bcbcbc;
+}
+
+.investor-chat .message-date {
+    font-size: 70%;
+    position: absolute;
+    bottom: -15px;
+    color: rgba(0, 0, 0, 0.5);
+    transition: color .4s;
+}
+
+.investor-chat .message-row:hover .message-date {
+    color: #000000;
+}
+
+.investor-chat .message-receiver .message-date {
+    left: 5px;
+}
+
+.investor-chat .message-sender .message-date {
+    right: 5px;
 }
