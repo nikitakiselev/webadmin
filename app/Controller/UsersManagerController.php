@@ -60,7 +60,9 @@ class UsersManagerController extends AppController
     {
         $this->Paginator->settings = $this->paginate;
 
-        $users = $this->Paginator->paginate('User');
+        $users = $this->Paginator->paginate('User', [
+            'User.type NOT' => 'subscriber',
+        ]);
 
         $this->set('users', $users);
     }
