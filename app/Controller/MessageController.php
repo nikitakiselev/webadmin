@@ -22,6 +22,23 @@ class MessageController extends AppController
         ParseClient::setServerURL(env('PARSE_SERVER_URL'), 'parse');
     }
 
+    public function beforeFilter()
+    {
+        parent::beforeFilter();
+
+        $userId = $this->Auth->user('User.id');
+
+        if (empty($userId)) {
+            $exploded = explode(".",$_SERVER['HTTP_HOST']);
+            $subdomain = array_shift($exploded);
+            if(strcasecmp('admin', $subdomain) == 0){
+                $this->redirect(array("controller" => "admin"));
+            } else {
+                $this->redirect(array("controller" => "users", "action" => "user_login"));
+            }
+        }
+    }
+
     /**
      * Storing message in database
      */

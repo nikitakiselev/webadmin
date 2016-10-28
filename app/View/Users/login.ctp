@@ -22,9 +22,9 @@
                 <?php echo $this->Form->submit('Login', array('class'=>'btn btn-default', 'div'=>false, 'style'=>'background: #cddddd none repeat scroll 0% 0%;') )?>
             </td>
         </tr>
-        <!--<tr>
-            <td colspan="2" style="text-align: right"><?php //echo $this->Html->link("Forget Password?", array('controller'=>'users', "action"=>'forgetPassword')  )?></td>
-        </tr>-->
+        <tr>
+            <td colspan="2" style="text-align: right"><?php echo $this->Html->link("Forgot Password?", array('controller'=>'auth', "action"=>'forgot')  )?></td>
+        </tr>
     </table>
     <?php echo $this->Form->end();?>
 </div>
