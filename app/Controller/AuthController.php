@@ -3,6 +3,9 @@
 App::uses('Controller', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
 
+@ob_start();
+@session_start();
+
 class AuthController extends Controller
 {
     /**
@@ -63,13 +66,30 @@ class AuthController extends Controller
         }
 
         if ($this->request->is('post')) {
-            $password = $this->request->data('new_password');
+            $password = $this->request->data('password');
 
-            // validate input password
+            $v = new \App\Support\Validator\Validator($this->request->data, [
+                'password' => 'required|confirmed',
+            ]);
+
+            $v->addMessage('confirmed', 'Password does not match the confirm password.');
+
+            if ($v->fails()) {
+                $_SESSION['errors'] = $v->errors();
+
+                return $this->redirect('/auth/reset/'.$code);
+            }
 
             $this->User->read(null, $user['User']['id']);
             $this->User->saveField('password', $password);
+            $this->User->saveField('password_reset_code', null);
+
+            $this->Session->setFlash('Your password successfully changed. Try login here.', 'success');
+
+            return $this->redirect('/admin');
         }
+
+        $this->set('code', $code);
     }
 
     /**
@@ -87,5 +107,11 @@ class AuthController extends Controller
             ->to($email)
             ->subject('Password reset link from 30 Second Pitch')
             ->send();
+
+        $this->Session->setFlash(
+            __('Your change password link sended. Check your email.'), 'success'
+        );
+
+        return $this->redirect('/auth/forgot');
     }
 }

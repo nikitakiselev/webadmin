@@ -69,7 +69,9 @@ $siteDescription = '30 Second Pitch Admin Panel';
             <!--<h1 style="font-size: 30px; font-weight: normal; color: rgb(255, 255, 255); font-family: Helvetica,sans-serif; margin: 60px 0px 30px;">30SecondPitch</h1>-->
         </div>
         <div id="content">
-            <?php echo $this->Session->flash(); ?>
+            <div style="width: 300px;">
+                <?php echo $this->Session->flash(); ?>
+            </div>
             <?php echo $this->fetch('content'); ?>
         </div>
     </div>
